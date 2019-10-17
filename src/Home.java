@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 
 public class Home extends Application
 {
-    private static final String  ARITHMETIC = "arithmetic";
+    private static final String  ARITHMETIC = "ARITHMETIC";
     private static Stage stage;
 
     public static void main(String[] args)
@@ -45,7 +45,11 @@ public class Home extends Application
 
         String style = getClass().getResource("css_styles/buttonStyle.css").toExternalForm();
 
-        Button button1 = new Button("Arithmetic");
+        VBox root = new VBox();
+        root.setSpacing(20);
+        root.setAlignment(Pos.CENTER);
+
+        Button button1 = new Button(ARITHMETIC);
         button1.setId("homeButton");
         button1.setOnAction(actionEvent -> {
             validateScreenSelection(ARITHMETIC);
@@ -59,10 +63,6 @@ public class Home extends Application
 
         Button button4 = new Button("Something else");
         button4.setId("homeButton");
-
-        VBox root = new VBox();
-        root.setSpacing(20);
-        root.setAlignment(Pos.CENTER);
 
         HBox labelLayout = new HBox(label);
         labelLayout.setAlignment(Pos.CENTER);
@@ -83,6 +83,5 @@ public class Home extends Application
     {
         if (selectedScreen.equals(ARITHMETIC))
             stage.setScene(ArithmeticScreen.getArithmeticScreen());
-
     }
 }
