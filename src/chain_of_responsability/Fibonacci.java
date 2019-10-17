@@ -6,7 +6,7 @@
  * Calculates the value of the Fibonacci sequence specified
  */
 
-package model_view_controller.model.chain_of_responsability;
+package chain_of_responsability;
 
 public class Fibonacci implements ArithmeticChain
 {

@@ -6,7 +6,7 @@
  * Calculates the factorial value of the specified number
  */
 
-package model_view_controller.model.chain_of_responsability;
+package chain_of_responsability;
 
 public class Factorial implements ArithmeticChain
 {

@@ -5,7 +5,7 @@
  * Class that contains the requirements to initialize the chain events.
  */
 
-package model_view_controller.model.chain_of_responsability;
+package chain_of_responsability;
 
 public class Requirements
 {
