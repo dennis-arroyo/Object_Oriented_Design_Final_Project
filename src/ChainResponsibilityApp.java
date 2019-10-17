@@ -1,4 +1,4 @@
-import chain_of_responsability.*;
+import model_view_controller.model.chain_of_responsability.*;
 
 public class ChainResponsibilityApp
 {

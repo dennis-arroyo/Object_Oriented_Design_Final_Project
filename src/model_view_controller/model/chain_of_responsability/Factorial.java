@@ -1,4 +1,12 @@
-package chain_of_responsability;
+/**
+ * Author: Dennis O. Arroyo Rivera
+ *
+ * Description:
+ * Concrete Handler class
+ * Calculates the factorial value of the specified number
+ */
+
+package model_view_controller.model.chain_of_responsability;
 
 public class Factorial implements ArithmeticChain
 {
