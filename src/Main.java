@@ -4,6 +4,7 @@
  * Description:
  * Main application. Initializes Menu screen from the view package on MVC.
  * */
+import Screens.Home;
 import javafx.application.Application;
 
 public class Main

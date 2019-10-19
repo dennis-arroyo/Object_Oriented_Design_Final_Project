@@ -18,7 +18,7 @@ public class ArithmeticScreen
     private static ArithmeticChain handler3 = new Square();
     private static ArithmeticChain handler4 = new SquaredRoot();
 
-    public static Scene getArithmeticScreen()
+    public static void setStageScene()
     {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         Label label = new Label();
@@ -58,14 +58,14 @@ public class ArithmeticScreen
         HBox buttonsLayout = new HBox(20, fibonacciButton, factorialButton,  squareButton, squareRootButton);
         buttonsLayout.setAlignment(Pos.CENTER);
 
-        Button returnButton = new Button("Home Screen");
+        Button returnButton = new Button("Screens.Home Screen");
         returnButton.setOnAction(actionEvent -> {
-
+            HomeScreen.setStageScene();
         });
 
-        root.getChildren().addAll(labelLayout, textField, buttonsLayout, textArea);
+        root.getChildren().addAll(labelLayout, textField, buttonsLayout, textArea, returnButton);
 
-        return new Scene(root);
+        Home.getStage().setScene(new Scene(root));
     }
 
     private static void performChainEvent()

@@ -1,49 +1,22 @@
-import Screens.ArithmeticScreen;
-import javafx.application.Application;
+package Screens;
+
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-public class Home extends Application
+public class HomeScreen
 {
     private static final String  ARITHMETIC = "ARITHMETIC";
-    private static Stage stage;
 
-    public static void main(String[] args)
+    public static void setStageScene()
     {
-        launch(args);
-    }
-
-    public static Stage getStage()
-    {
-        return stage;
-    }
-
-    public void start(Stage primaryStage)
-    {
-        stage = primaryStage;
-        stage.setTitle("This is a test!");
-
-        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-
-        stage.setX(50);
-        stage.setY(50);
-        stage.setWidth(primaryScreenBounds.getWidth() - primaryScreenBounds.getWidth()/3);
-        stage.setHeight(primaryScreenBounds.getHeight() - primaryScreenBounds.getHeight()/3);
-
-        stage.initStyle(StageStyle.DECORATED);
-
         Label label = new Label();
         label.setText("Choose program to run...");
 
-        String style = getClass().getResource("css_styles/buttonStyle.css").toExternalForm();
+        String style = HomeScreen.class.getResource("../css_styles/buttonStyle.css").toExternalForm();
 
         VBox root = new VBox();
         root.setSpacing(20);
@@ -69,19 +42,16 @@ public class Home extends Application
 
         HBox buttonsLayout = new HBox(20, button1, button2,  button3, button4);
         buttonsLayout.setAlignment(Pos.CENTER);
-
-        root.getChildren().addAll(labelLayout, buttonsLayout);
-
         Scene scene = new Scene(root);
         scene.getStylesheets().add(style);
 
-        stage.setScene(scene);
-        stage.show();
+        root.getChildren().addAll(labelLayout, buttonsLayout);
+        Home.getStage().setScene(scene);
     }
 
-    private void validateScreenSelection(String selectedScreen)
+    private static void validateScreenSelection(String selectedScreen)
     {
         if (selectedScreen.equals(ARITHMETIC))
-            stage.setScene(ArithmeticScreen.getArithmeticScreen());
+            ArithmeticScreen.setStageScene();
     }
 }
