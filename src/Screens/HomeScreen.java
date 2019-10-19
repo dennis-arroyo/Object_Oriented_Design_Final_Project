@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 public class HomeScreen
 {
     private static final String  ARITHMETIC = "ARITHMETIC";
+    private static final String  GRAPH = "GRAPH";
 
     public static void setStageScene()
     {
@@ -30,6 +31,9 @@ public class HomeScreen
 
         Button button2 = new Button("Graph");
         button2.setId("homeButton");
+        button2.setOnAction(actionEvent -> {
+            validateScreenSelection(GRAPH);
+        });
 
         Button button3 = new Button("Employee App");
         button3.setId("homeButton");
@@ -53,5 +57,7 @@ public class HomeScreen
     {
         if (selectedScreen.equals(ARITHMETIC))
             ArithmeticScreen.setStageScene();
+        if (selectedScreen.equals(GRAPH))
+            GraphScreen.setStageScene();
     }
 }

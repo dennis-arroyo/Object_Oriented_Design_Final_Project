@@ -22,12 +22,12 @@ public class Square implements ArithmeticChain
     public String calculate(int number, String arithmeticToPerform)
     {
         if (arithmeticToPerform.equals("Square"))
-            return Integer.toString(calculateSquared(number));
+            return String.format("%,d", calculateSquare(number));
         else
             return nextInChain.calculate(number, arithmeticToPerform);
     }
 
-    private int calculateSquared(int num)
+    private int calculateSquare(int num)
     {
         return (int) Math.pow(num, 2);
     }

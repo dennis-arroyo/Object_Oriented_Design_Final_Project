@@ -23,7 +23,7 @@ public class Fibonacci implements ArithmeticChain
     public String calculate(int number, String arithmeticToPerform)
     {
         if (arithmeticToPerform.equals("Fibonacci"))
-            return Integer.toString(calculateFibonacci(number));
+            return String.format("%,d", calculateFibonacci(number));
         else
             return nextInChain.calculate(number, arithmeticToPerform);
     }

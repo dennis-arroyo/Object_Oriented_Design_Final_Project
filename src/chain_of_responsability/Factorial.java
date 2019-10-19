@@ -8,6 +8,8 @@
 
 package chain_of_responsability;
 
+import java.math.BigInteger;
+
 public class Factorial implements ArithmeticChain
 {
     private ArithmeticChain nextInChain;
@@ -22,23 +24,17 @@ public class Factorial implements ArithmeticChain
     public String calculate(int number, String arithmeticToPerform)
     {
         if (arithmeticToPerform.equals("Factorial"))
-            return Integer.toString(calculateFactorial(number));
+            return calculateFactorial(number);
         else
             return nextInChain.calculate(number, arithmeticToPerform);
     }
 
-    private int calculateFactorial(int number)
+    private String calculateFactorial(int number)
     {
-        if (number == 0 || number == 1)
-            return 1;
-        else
-        {
-            int pos = 1;
-
-            for (int i = 1; i <= number; i++)
-                pos *= i;
-
-            return pos;
+        BigInteger fact = new BigInteger("1");
+        for (int i = 1; i <= number; i++) {
+            fact = fact.multiply(new BigInteger(i + ""));
         }
+        return String.format("%,d", fact);
     }
 }
