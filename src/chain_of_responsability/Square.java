@@ -19,13 +19,12 @@ public class Square implements ArithmeticChain
     }
 
     @Override
-    public void calculate(Requirements req)
+    public String calculate(int number, String arithmeticToPerform)
     {
-        int num = req.getNumber();
-        if (req.getArithmeticToPerform().equals("square"))
-            System.out.println("The square of " + num + " is: " + calculateSquared(num));
+        if (arithmeticToPerform.equals("Square"))
+            return Integer.toString(calculateSquared(number));
         else
-            nextInChain.calculate(req);
+            return nextInChain.calculate(number, arithmeticToPerform);
     }
 
     private int calculateSquared(int num)

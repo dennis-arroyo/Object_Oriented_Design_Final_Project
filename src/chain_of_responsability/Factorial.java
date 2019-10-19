@@ -19,13 +19,12 @@ public class Factorial implements ArithmeticChain
     }
 
     @Override
-    public void calculate(Requirements req)
+    public String calculate(int number, String arithmeticToPerform)
     {
-        int num = req.getNumber();
-        if (req.getArithmeticToPerform().equals("factorial"))
-            System.out.println(num + "! is: " + calculateFactorial(num));
+        if (arithmeticToPerform.equals("Factorial"))
+            return Integer.toString(calculateFactorial(number));
         else
-            nextInChain.calculate(req);
+            return nextInChain.calculate(number, arithmeticToPerform);
     }
 
     private int calculateFactorial(int number)

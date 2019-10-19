@@ -14,16 +14,12 @@ public class SquaredRoot implements ArithmeticChain
     public void setNextChain(ArithmeticChain nextChain) {}
 
     @Override
-    public void calculate(Requirements req)
+    public String calculate(int number, String arithmeticToPerform)
     {
-        int num = req.getNumber();
-        if (req.getArithmeticToPerform().equals("squared root"))
-            System.out.println("The square root of " + num + " is: "
-                    + calculateSquaredRoot(num));
+        if (arithmeticToPerform.equals("Square Root"))
+            return String.format("%.2f", calculateSquaredRoot(number));
         else
-            System.out.println("The arithmetic chain only accepts Fibonacci, Factorial, " +
-                    "Square, or Squared Root " +
-                    "operations");;
+            return "The arithmetic chain only accepts Fibonacci, Factorial, Square, or Square Root operations";
     }
 
     private double calculateSquaredRoot(int num)

@@ -20,14 +20,12 @@ public class Fibonacci implements ArithmeticChain
     }
 
     @Override
-    public void calculate(Requirements req)
+    public String calculate(int number, String arithmeticToPerform)
     {
-        int num = req.getNumber();
-        if (req.getArithmeticToPerform().equals("fibonacci"))
-            System.out.println("The position " + num + " in the fibonacci sequence is: "
-                    + calculateFibonacci(num));
+        if (arithmeticToPerform.equals("Fibonacci"))
+            return Integer.toString(calculateFibonacci(number));
         else
-            nextInChain.calculate(req);
+            return nextInChain.calculate(number, arithmeticToPerform);
     }
 
     private int calculateFibonacci(int number)
