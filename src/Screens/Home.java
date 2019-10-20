@@ -25,11 +25,12 @@ public class Home extends Application
         stage.setX(50);
         stage.setY(50);
         stage.setWidth(primaryScreenBounds.getWidth() - primaryScreenBounds.getWidth()/3);
-        stage.setHeight(primaryScreenBounds.getHeight() - primaryScreenBounds.getHeight()/3);
+        stage.setHeight(primaryScreenBounds.getHeight() - primaryScreenBounds.getHeight()/4);
 
         stage.initStyle(StageStyle.DECORATED);
 
         HomeScreen.setStageScene();
+        stage.setResizable(false);
         stage.show();
     }
 

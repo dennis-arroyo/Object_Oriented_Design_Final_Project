@@ -28,11 +28,16 @@ public class BarGraphTest extends Application {
         dataSeries1.setName("2014");
 
         dataSeries1.getData().add(new XYChart.Data<String, Number>("Java", 20.973));
-        dataSeries1.getData().add(new XYChart.Data<String, Number>("C#", 4.429));
-        dataSeries1.getData().add(new XYChart.Data<String, Number>("PHP", 2.792));
+
+        // Series 2 - Data of 2015
+        XYChart.Series<String, Number> dataSeries2 = new XYChart.Series<String, Number>();
+        dataSeries2.setName("2015");
+
+        dataSeries2.getData().add(new XYChart.Data<String, Number>("Java", 26.983));
 
         // Add Series to BarChart.
         barChart.getData().add(dataSeries1);
+        barChart.getData().add(dataSeries2);
 
         barChart.setTitle("Some Programming Languages");
 

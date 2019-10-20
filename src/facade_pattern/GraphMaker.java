@@ -4,6 +4,7 @@ import Screens.GraphScreen;
 import facade_pattern.observer_pattern.GraphUpdate;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 
 public class GraphMaker implements GraphUpdate
 {
@@ -30,20 +31,13 @@ public class GraphMaker implements GraphUpdate
     public void removeOldData(PieChart oldPie, BarChart oldBar)
     {
         oldPie.getData().clear();
+        oldBar.getData().clear();
     }
 
     @Override
     public void addNewData(PieChart oldPie, BarChart oldBar)
     {
-        PieChart.Data firstNumber = new PieChart.Data("Number #1",
-                Integer.parseInt(GraphScreen.getTextField1().getText()));
-        PieChart.Data secondNumber = new PieChart.Data("Number #2",
-                Integer.parseInt(GraphScreen.getTextField2().getText()));
-        PieChart.Data thirdNumber = new PieChart.Data("Number #3",
-                Integer.parseInt(GraphScreen.getTextField3().getText()));
-
-        oldPie.getData().add(firstNumber);
-        oldPie.getData().add(secondNumber);
-        oldPie.getData().add(thirdNumber);
+        Pie.getDataSeries(oldPie);
+        Bar.getDataSeries(oldBar);
     }
 }
