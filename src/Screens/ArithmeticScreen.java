@@ -128,9 +128,6 @@ public class ArithmeticScreen
 
     private static boolean validateTextFieldContent(String inputText)
     {
-        if (inputText != null && !inputText.isEmpty() && inputText.matches("^\\d+$"))
-            return true;
-        else
-            return false;
+        return inputText != null && !inputText.isEmpty() && inputText.matches("^\\d+$");
     }
 }
