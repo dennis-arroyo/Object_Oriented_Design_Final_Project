@@ -6,7 +6,7 @@ public class EmployeeVisitorImpl implements EmployeeVisitor
     @Override
     public double visit(HourlyEmployee hourlyEmployee)
     {
-        int hours = hourlyEmployee.getHoursWorked();
+        double hours = hourlyEmployee.getHoursWorked();
         double salary = hourlyEmployee.getSalary();
 
         if (hours <= 40)

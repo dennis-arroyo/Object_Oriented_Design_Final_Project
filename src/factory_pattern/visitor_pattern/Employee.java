@@ -2,43 +2,34 @@ package factory_pattern.visitor_pattern;
 
 public class Employee
 {
-    private int firstName;
-    private int lastName;
+    private String firstName;
+    private String lastName;
     private int id;
 
-    public Employee(int firstName, int lastName, int id)
+    public Employee(String firstName, String lastName)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
     }
 
-    public int getFirstName()
+    public String getFirstName()
     {
         return firstName;
     }
 
-    public void setFirstName(int firstName)
+    public void setFirstName(String firstName)
     {
         this.firstName = firstName;
     }
 
-    public int getLastName()
+    public String getLastName()
     {
         return lastName;
     }
 
-    public void setLastName(int lastName)
+    public void setLastName(String lastName)
     {
         this.lastName = lastName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
     }
 }

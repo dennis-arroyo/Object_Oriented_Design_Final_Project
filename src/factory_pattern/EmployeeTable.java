@@ -2,21 +2,34 @@ package factory_pattern;
 
 import Screens.EmployeeAppScreen;
 import factory_pattern.visitor_pattern.Employee;
+import factory_pattern.visitor_pattern.EmployeeCollection;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class EmployeeTable implements SceneComponent
 {
     @Override
     public void drawComponent()
     {
-        TableView<Employee> table = new TableView<>();
-        TableColumn firstNameColumn = new TableColumn("First Name");
-        TableColumn lastNameColumn = new TableColumn("Last Name");
-        TableColumn idColumn = new TableColumn("Id");
-        TableColumn typeColumn = new TableColumn("Type");
+        TableView<EmployeeCollection> table = new TableView<>();
+        TableColumn<EmployeeCollection, String> firstNameColumn = new TableColumn<>("First Name");
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        firstNameColumn.setPrefWidth(100);
 
-        table.getColumns().addAll(firstNameColumn, lastNameColumn, idColumn, typeColumn);
+        TableColumn<EmployeeCollection, String> lastNameColumn = new TableColumn<>("Last Name");
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        lastNameColumn.setPrefWidth(100);
+
+        TableColumn<EmployeeCollection, String> typeColumn = new TableColumn<>("Type");
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        typeColumn.setPrefWidth(100);
+
+        TableColumn<EmployeeCollection, String> descriptionColumn = new TableColumn<>("Description");
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        descriptionColumn.setPrefWidth(300);
+
+        table.getColumns().addAll(firstNameColumn, lastNameColumn, typeColumn, descriptionColumn);
 
         EmployeeAppScreen.setTableView(table);
     }

@@ -6,14 +6,14 @@ public class SalesEmployee extends Employee implements EmployeeElement
     private double commissionPercentage;
 
 
-    public SalesEmployee(int firstName, int lastName, int id)
+    public SalesEmployee(String firstName, String lastName)
     {
-        super(firstName, lastName, id);
+        super(firstName, lastName);
     }
 
-    public SalesEmployee(int firstName, int lastName, int id, double totalSales, double commissionPercentage)
+    public SalesEmployee(String firstName, String lastName, double totalSales, double commissionPercentage)
     {
-        super(firstName, lastName, id);
+        super(firstName, lastName);
         this.totalSales = totalSales;
         this.commissionPercentage = commissionPercentage;
     }

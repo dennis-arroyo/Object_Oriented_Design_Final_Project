@@ -8,14 +8,11 @@ public class ComponentFactory
         }
         if(component.equalsIgnoreCase("table")){
             new EmployeeTable().drawComponent();
-
         }
-//        else if(shapeType.equalsIgnoreCase("RECTANGLE")){
-//            return new Rectangle();
-//
-//        } else if(shapeType.equalsIgnoreCase("SQUARE")){
-//            return new Square();
-//        }
+        else if (component.equalsIgnoreCase("add button"))
+        {
+            new AddEmployeeButton().drawComponent();
+        }
 
         return null;
     }

@@ -5,16 +5,16 @@ import factory_pattern.visitor_pattern.Employee;
 public class HourlyEmployee extends Employee implements EmployeeElement
 {
     private double salary;
-    private int hoursWorked;
+    private double hoursWorked;
 
-    public HourlyEmployee(int firstName, int lastName, int id)
+    public HourlyEmployee(String firstName, String lastName)
     {
-        super(firstName, lastName, id);
+        super(firstName, lastName);
     }
 
-    public HourlyEmployee(int firstName, int lastName, int id, double salary, int hoursWorked)
+    public HourlyEmployee(String firstName, String lastName, double salary, double hoursWorked)
     {
-        super(firstName, lastName, id);
+        super(firstName, lastName);
         this.salary = salary;
         this.hoursWorked = hoursWorked;
     }
@@ -29,7 +29,7 @@ public class HourlyEmployee extends Employee implements EmployeeElement
         this.salary = salary;
     }
 
-    public int getHoursWorked()
+    public double getHoursWorked()
     {
         return hoursWorked;
     }
