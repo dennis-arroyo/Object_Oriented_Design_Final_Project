@@ -26,28 +26,46 @@ public class AddEmployeeButton implements SceneComponent
     {
         String firstName = EmployeeAppScreen.getFirstNameInput().getText();
         String secondName = EmployeeAppScreen.getSecondNameInput().getText();
-        double salaryOrSales = Double.parseDouble(EmployeeAppScreen.getSalaryOrSalesInput().getText());
-        double hoursOrCommission = Double.parseDouble(EmployeeAppScreen.getHoursOrCommissionInput().getText());
+        double salaryOrSales = 0.0;
+        boolean validNumberInput = validateNumbersInput(EmployeeAppScreen.getSalaryOrSalesInput().getText());
+        if (validNumberInput)
+            salaryOrSales = Double.parseDouble(EmployeeAppScreen.getSalaryOrSalesInput().getText());
+        double hoursOrCommission = 0.0;
+        boolean validNumberInput2 = validateNumbersInput(EmployeeAppScreen.getHoursOrCommissionInput().getText());
+        if (validNumberInput2)
+            hoursOrCommission = Double.parseDouble(EmployeeAppScreen.getHoursOrCommissionInput().getText());
 
-        if (empType.equals(HOURLY)) {
-            HourlyEmployee emp = new HourlyEmployee(firstName, secondName, salaryOrSales, hoursOrCommission);
-            EmployeeVisitor employeeVisitor = new EmployeeVisitorImpl();
+        if (validateNameInput(firstName, secondName) && validNumberInput && validNumberInput2) {
 
-            double profit = emp.accept(employeeVisitor);
 
-            EmployeeAppScreen.getTableView().getItems().add(new EmployeeCollection(emp.getFirstName(),
-                    emp.getLastName(), emp.getTypeOfEmployee(), emp.getSalary(), emp.getHoursWorked(), profit));
+            if (empType.equals(HOURLY)) {
+                HourlyEmployee emp = new HourlyEmployee(firstName, secondName, salaryOrSales, hoursOrCommission);
+                EmployeeVisitor employeeVisitor = new EmployeeVisitorImpl();
+
+                double profit = emp.accept(employeeVisitor);
+
+                EmployeeAppScreen.getTableView().getItems().add(new EmployeeCollection(emp.getFirstName(),
+                        emp.getLastName(), emp.getTypeOfEmployee(), emp.getSalary(), emp.getHoursWorked(), profit));
+            } else {
+                SalesEmployee emp = new SalesEmployee(firstName, secondName, salaryOrSales, hoursOrCommission);
+                EmployeeVisitor employeeVisitor = new EmployeeVisitorImpl();
+
+                double profit = emp.accept(employeeVisitor);
+
+                EmployeeAppScreen.getTableView().getItems().add(new EmployeeCollection(emp.getFirstName(),
+                        emp.getLastName(), emp.getTypeOfEmployee(), emp.getTotalSales(), emp.getCommissionPercentage(), profit));
+            }
         }
-        else
-        {
-            SalesEmployee emp = new SalesEmployee(firstName, secondName, salaryOrSales, hoursOrCommission);
-            EmployeeVisitor employeeVisitor = new EmployeeVisitorImpl();
 
-            double profit = emp.accept(employeeVisitor);
+    }
 
-            EmployeeAppScreen.getTableView().getItems().add(new EmployeeCollection(emp.getFirstName(),
-                    emp.getLastName(), emp.getTypeOfEmployee(), emp.getTotalSales(), emp.getCommissionPercentage(), profit));
-        }
+    private static boolean validateNameInput(String first, String second)
+    {
+        return first != null && !first.isEmpty() && second != null && !second.isEmpty();
+    }
 
+    private static boolean validateNumbersInput(String number)
+    {
+        return number != null && !number.isEmpty() && number.matches("-?\\d+(\\.\\d+)?");
     }
 }

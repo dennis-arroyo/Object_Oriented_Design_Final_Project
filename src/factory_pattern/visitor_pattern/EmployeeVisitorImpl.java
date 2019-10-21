@@ -12,7 +12,7 @@ public class EmployeeVisitorImpl implements EmployeeVisitor
         if (hours <= 40)
             return salary * hours;
         else
-            return salary * 40 * (salary*1.5) * (hours - 40);
+            return salary * 40 + (salary*1.5) * (hours - 40);
     }
 
     @Override

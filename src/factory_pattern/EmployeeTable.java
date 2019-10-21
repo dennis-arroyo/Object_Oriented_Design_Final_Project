@@ -26,7 +26,7 @@ public class EmployeeTable implements SceneComponent
         typeColumn.setPrefWidth(100);
 
         TableColumn<EmployeeCollection, String> descriptionColumn = new TableColumn<>("Description");
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         descriptionColumn.setPrefWidth(300);
 
         table.getColumns().addAll(firstNameColumn, lastNameColumn, typeColumn, descriptionColumn);

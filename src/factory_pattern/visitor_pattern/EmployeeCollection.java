@@ -8,6 +8,7 @@ public class EmployeeCollection
     private double salOrSales;
     private double hoursOrCom;
     private double totalGain;
+    private String description;
 
     public EmployeeCollection(String firstName, String lastName, String type,
                               double salOrSales, double hoursOrCom, double totalGain)
@@ -18,6 +19,12 @@ public class EmployeeCollection
         this.salOrSales = salOrSales;
         this.hoursOrCom = hoursOrCom;
         this.totalGain = totalGain;
+        if (type.equals("Hourly"))
+            description = String.format("Salary =  $%.2f \tHours Worked = %.0f \nWeekly Salary = $%,.2f",
+                    salOrSales, hoursOrCom, totalGain);
+        if (type.equals("Sales"))
+            description = String.format("Total Sales =  $%.2f \tCommission Rate = %.2f \nWeekly Salary = $%,.2f",
+                    salOrSales, hoursOrCom, totalGain);
     }
 
     public String getFirstName()
@@ -78,5 +85,11 @@ public class EmployeeCollection
     public void setTotalGain(double totalGain)
     {
         this.totalGain = totalGain;
+    }
+
+
+    public String getDescription()
+    {
+        return description;
     }
 }
