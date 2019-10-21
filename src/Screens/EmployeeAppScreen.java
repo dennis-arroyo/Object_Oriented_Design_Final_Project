@@ -3,7 +3,6 @@ package Screens;
 import factory_pattern.ComponentFactory;
 import factory_pattern.visitor_pattern.Employee;
 import factory_pattern.visitor_pattern.EmployeeCollection;
-import factory_pattern.visitor_pattern.SalesEmployee;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -27,7 +26,7 @@ public class EmployeeAppScreen
     private static Button addButton;
 
     private static TextField firstNameInput;
-    private static TextField secondNameInput;
+    private static TextField lastName;
     private static TextField salaryOrSalesInput;
     private static TextField hoursOrCommissionInput;
     private static ChoiceBox<String> empTypeChoiceBox;
@@ -67,14 +66,14 @@ public class EmployeeAppScreen
         EmployeeAppScreen.firstNameInput = firstNameInput;
     }
 
-    public static TextField getSecondNameInput()
+    public static TextField getLastName()
     {
-        return secondNameInput;
+        return lastName;
     }
 
-    public static void setSecondNameInput(TextField secondNameInput)
+    public static void setLastName(TextField lastName)
     {
-        EmployeeAppScreen.secondNameInput = secondNameInput;
+        EmployeeAppScreen.lastName = lastName;
     }
 
     public static TextField getSalaryOrSalesInput()
@@ -132,13 +131,13 @@ public class EmployeeAppScreen
         firstNameInput.setPromptText("Ex: Jane");
         commonTextFieldProperties(firstNameInput);
 
-        Label empSecondName = new Label("Second Name: ");
+        Label empLastName = new Label("Last Name: ");
 
-        secondNameInput = new TextField();
-        secondNameInput.setPromptText("Ex: Doe");
-        commonTextFieldProperties(secondNameInput);
+        lastName = new TextField();
+        lastName.setPromptText("Ex: Doe");
+        commonTextFieldProperties(lastName);
 
-        Label empType = new Label("Second Name: ");
+        Label empType = new Label("Type: ");
 
         empTypeChoiceBox = new ChoiceBox<String>();
         empTypeChoiceBox.setValue(HOURLY);
@@ -151,10 +150,10 @@ public class EmployeeAppScreen
         });
 
         informationToAddLayout.add(empFirstName, 0, 0, 1, 1);
-        informationToAddLayout.add(empSecondName, 1, 0, 1, 1);
+        informationToAddLayout.add(empLastName, 1, 0, 1, 1);
         informationToAddLayout.add(empType, 2, 0, 1, 1);
         informationToAddLayout.add(firstNameInput, 0, 1, 1, 1);
-        informationToAddLayout.add(secondNameInput, 1, 1, 1, 1);
+        informationToAddLayout.add(lastName, 1, 1, 1, 1);
         informationToAddLayout.add(empTypeChoiceBox, 2, 1, 1, 1);
 
         ComponentFactory addButtonComponent = new ComponentFactory();
@@ -166,6 +165,8 @@ public class EmployeeAppScreen
         informationToAddLayout.setHgap(10);
         informationToAddLayout.setVgap(10);
 
+        Label fillLabel = new Label("* Fill all fields *");
+
         String style = HomeScreen.class.getResource("../css_styles/buttonStyle.css").toExternalForm();
         Button returnButton = new Button("HOME");
         returnButton.setId("homeButton");
@@ -173,7 +174,7 @@ public class EmployeeAppScreen
             HomeScreen.setStageScene();
         });
 
-        root.getChildren().addAll(tableLayout, informationToAddLayout, returnButton);
+        root.getChildren().addAll(tableLayout, informationToAddLayout, fillLabel, returnButton);
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(style);

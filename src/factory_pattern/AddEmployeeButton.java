@@ -2,11 +2,7 @@ package factory_pattern;
 
 import Screens.EmployeeAppScreen;
 import factory_pattern.visitor_pattern.*;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
-
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 public class AddEmployeeButton implements SceneComponent
 {
@@ -25,7 +21,7 @@ public class AddEmployeeButton implements SceneComponent
     private static void addEmployeeData(String empType)
     {
         String firstName = EmployeeAppScreen.getFirstNameInput().getText();
-        String secondName = EmployeeAppScreen.getSecondNameInput().getText();
+        String lastName = EmployeeAppScreen.getLastName().getText();
         double salaryOrSales = 0.0;
         boolean validNumberInput = validateNumbersInput(EmployeeAppScreen.getSalaryOrSalesInput().getText());
         if (validNumberInput)
@@ -35,11 +31,11 @@ public class AddEmployeeButton implements SceneComponent
         if (validNumberInput2)
             hoursOrCommission = Double.parseDouble(EmployeeAppScreen.getHoursOrCommissionInput().getText());
 
-        if (validateNameInput(firstName, secondName) && validNumberInput && validNumberInput2) {
+        if (validateNameInput(firstName, lastName) && validNumberInput && validNumberInput2) {
 
 
             if (empType.equals(HOURLY)) {
-                HourlyEmployee emp = new HourlyEmployee(firstName, secondName, salaryOrSales, hoursOrCommission);
+                HourlyEmployee emp = new HourlyEmployee(firstName, lastName, salaryOrSales, hoursOrCommission);
                 EmployeeVisitor employeeVisitor = new EmployeeVisitorImpl();
 
                 double profit = emp.accept(employeeVisitor);
@@ -47,7 +43,7 @@ public class AddEmployeeButton implements SceneComponent
                 EmployeeAppScreen.getTableView().getItems().add(new EmployeeCollection(emp.getFirstName(),
                         emp.getLastName(), emp.getTypeOfEmployee(), emp.getSalary(), emp.getHoursWorked(), profit));
             } else {
-                SalesEmployee emp = new SalesEmployee(firstName, secondName, salaryOrSales, hoursOrCommission);
+                SalesEmployee emp = new SalesEmployee(firstName, lastName, salaryOrSales, hoursOrCommission);
                 EmployeeVisitor employeeVisitor = new EmployeeVisitorImpl();
 
                 double profit = emp.accept(employeeVisitor);

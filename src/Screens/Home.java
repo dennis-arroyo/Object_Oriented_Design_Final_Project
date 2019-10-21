@@ -18,7 +18,7 @@ public class Home extends Application
     public void start(Stage primaryStage)
     {
         stage = primaryStage;
-        stage.setTitle("This is a test!");
+        stage.setTitle("CECS 6150 Object-Oriented Design");
 
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 
