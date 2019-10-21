@@ -11,6 +11,7 @@ public class HomeScreen
 {
     private static final String  ARITHMETIC = "ARITHMETIC";
     private static final String  GRAPH = "GRAPH";
+    private static final String  EMPLOYEE = "EMPLOYEE";
 
     public static void setStageScene()
     {
@@ -37,6 +38,9 @@ public class HomeScreen
 
         Button button3 = new Button("Employee App");
         button3.setId("homeButton");
+        button3.setOnAction(actionEvent -> {
+            validateScreenSelection(EMPLOYEE);
+        });
 
         Button button4 = new Button("Something else");
         button4.setId("homeButton");
@@ -59,5 +63,8 @@ public class HomeScreen
             ArithmeticScreen.setStageScene();
         if (selectedScreen.equals(GRAPH))
             GraphScreen.setStageScene();
+        if (selectedScreen.equals(EMPLOYEE))
+            EmployeeAppScreen.setStageScene();
+
     }
 }

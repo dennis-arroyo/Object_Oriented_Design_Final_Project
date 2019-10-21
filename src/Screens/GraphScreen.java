@@ -79,6 +79,8 @@ public class GraphScreen
 
         graphs = new GraphMaker();
 
+        Label firstInputLabel = new Label("Number #1: ");
+
         textField1 = new TextField();
         textField1.setPrefWidth(stageWidth/4);
         textField1.setMaxWidth(stageHeight/6);
@@ -88,6 +90,8 @@ public class GraphScreen
         textField1.textProperty().addListener((Observable) -> {
             performGraphDrawing();
         });
+
+        Label secondInputLabel = new Label("Number #2: ");
 
         textField2 = new TextField();
         textField2.setPrefWidth(stageWidth/4);
@@ -99,6 +103,8 @@ public class GraphScreen
             performGraphDrawing();
         });
 
+        Label thirdInputLabel = new Label("Number #3: ");
+
         textField3 = new TextField();
         textField3.setPrefWidth(stageWidth/4);
         textField3.setMaxWidth(stageHeight/6);
@@ -109,7 +115,8 @@ public class GraphScreen
             performGraphDrawing();
         });
 
-        HBox textFieldsLayout = new HBox(textField1, textField2, textField3);
+        HBox textFieldsLayout = new HBox(firstInputLabel, textField1,
+                secondInputLabel, textField2, thirdInputLabel, textField3);
         textFieldsLayout.setSpacing(5);
         textFieldsLayout.setAlignment(Pos.CENTER);
 
