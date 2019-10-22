@@ -88,19 +88,15 @@ public class ArithmeticScreen
         HBox buttonsLayout = new HBox(20, fibonacciButton, factorialButton,  squareButton, squareRootButton);
         buttonsLayout.setAlignment(Pos.CENTER);
 
-        String style = HomeScreen.class.getResource("../css_styles/buttonStyle.css").toExternalForm();
         Button returnButton = new Button("HOME");
         returnButton.setId("homeButton");
         returnButton.setOnAction(actionEvent -> {
-            HomeScreen.setStageScene();
+            Home.getScene().setRoot(Home.getRootFromHomeCopy());
         });
 
         root.getChildren().addAll(labelLayout, textField, buttonsLayout, textArea, returnButton);
 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(style);
-
-        Home.getStage().setScene(scene);
+        Home.getScene().setRoot(root);
     }
 
     private static void performChainEvent()

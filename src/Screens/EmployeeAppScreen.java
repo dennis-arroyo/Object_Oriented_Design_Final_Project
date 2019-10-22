@@ -167,18 +167,15 @@ public class EmployeeAppScreen
 
         Label fillLabel = new Label("* Fill all fields *");
 
-        String style = HomeScreen.class.getResource("../css_styles/buttonStyle.css").toExternalForm();
         Button returnButton = new Button("HOME");
         returnButton.setId("homeButton");
         returnButton.setOnAction(actionEvent -> {
-            HomeScreen.setStageScene();
+            Home.getScene().setRoot(Home.getRootFromHomeCopy());
         });
 
         root.getChildren().addAll(tableLayout, informationToAddLayout, fillLabel, returnButton);
 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(style);
-        Home.getStage().setScene(scene);
+        Home.getScene().setRoot(root);
     }
 
     private static void addEmployeeInputFieldComponents(String typeOfEmp, boolean chageEvent)

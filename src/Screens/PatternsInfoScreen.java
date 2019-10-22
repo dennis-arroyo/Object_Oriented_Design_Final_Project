@@ -138,18 +138,15 @@ public class PatternsInfoScreen
         textArea.setPrefHeight(stageHeight/2);
         textArea.setMaxHeight(stageHeight/2);
 
-        String style = HomeScreen.class.getResource("../css_styles/buttonStyle.css").toExternalForm();
         Button returnButton = new Button("HOME");
         returnButton.setId("homeButton");
         returnButton.setOnAction(actionEvent -> {
-            HomeScreen.setStageScene();
+            Home.getScene().setRoot(Home.getRootFromHomeCopy());
         });
 
-        root.getChildren().addAll(label, checkBoxLayout, textArea, returnButton);
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(style);
+        root.getChildren().addAll(label, checkBoxLayout, textArea, returnButton);;
 
-        Home.getStage().setScene(scene);
+        Home.getScene().setRoot(root);
     }
 
     private static void loadPatternData()
